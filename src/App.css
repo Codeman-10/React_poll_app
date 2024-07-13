@@ -1,42 +1,99 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.layout {
+  border: 2px solid rgb(69, 112, 255);
+  margin: 2%;
+  min-height: 95vh;
+  width: inherit;
   text-align: center;
 }
+h2 {
+  color: rgb(47, 0, 255);
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  background-color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  width: 94%;
+  border: 2px solid green;
+  padding-bottom: 30px;
+  min-height: 100%;
+  margin: 3%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+form div label {
+  flex: 0.2;
+  text-align: left;
+  font-weight: 600;
+  text-transform: capitalize;
 }
-
-.card {
-  padding: 2em;
+form div input {
+  flex: 0.3;
+  height: 25px;
+  outline: none;
 }
-
-.read-the-docs {
-  color: #888;
+form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: inherit;
+  margin: 5px 0;
+}
+form div button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* width: inherit; */
+  margin-top: 30px;
+}
+button {
+  height: 40px;
+  cursor: pointer;
+  width: 20%;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  background-color: rgb(47, 0, 255);
+  padding: 20px 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-right: 70px;
+}
+button:hover {
+  color: rgb(47, 0, 255);
+  background-color: white;
+}
+.result_section {
+  border: 2px solid yellow;
+  margin: 2%;
+  min-height: 10vh;
+}
+.result_section div {
+  margin: 2px 5px;
+  border-bottom: 2px solid yellow;
+}
+.result_section div ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0px;
+}
+.result_section div ul li button{
+  margin: 0 25px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-self: start;
+  
+}
+.votes_lbl{
+  background-color: white;
+  color: blue;
+  font-weight: bolder;
+  padding: 3px;
+  border-radius: 4px;
+  letter-spacing: 1px;
 }

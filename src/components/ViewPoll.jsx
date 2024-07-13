@@ -3,7 +3,6 @@ import io from "socket.io-client";
 import axios from "../utils/axiosConfig";
 import useStore from "../store/store";
 
-
 function ViewPoll() {
   const polls = useStore((state) => state.polls);
   const addPoll = useStore((state) => state.addPoll);
@@ -38,19 +37,32 @@ function ViewPoll() {
 
   // Add guard clause for when polls is undefined or empty
   if (!polls || polls.length === 0) {
-    return <p>No polls available.</p>;
+    return (
+      <div className="result_section">
+        {" "}
+        <p>No polls available.</p>
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className="result_section">
       {polls.map((poll) => (
         <div key={poll.question}>
           <h3>{poll.question}</h3>
           <ul>
             {poll.options?.map((option, index) => (
               <li key={option}>
-                {option} - {poll.votes[index]} votes
-                <button onClick={() => handleVote(poll.id, index)}>Vote</button>
+                <span>
+                  {" "}
+                  {option} - <span className="votes_lbl">{poll.votes[index]} votes</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleVote(poll.id, index)}
+                >
+                  Vote
+                </button>
               </li>
             ))}
           </ul>
