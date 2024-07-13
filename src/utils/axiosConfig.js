@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: window.location.origin,
+  baseURL: "https://polling-web-service.onrender.com/",
   // other axios options
 });
 
