@@ -32,7 +32,6 @@ function ViewPoll() {
   };
 
   const deletePoll = async (pollId) => {
-    e.preventDefault();
     const res = await axios.delete("/api/polls", {
       pollId,
     });
