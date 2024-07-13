@@ -7,7 +7,7 @@ function App() {
     <>
       <div className="layout">
         <CreatePoll />
-        <h2>Live POLLS!...</h2>
+        <h2>Live Poll!...</h2>
         <ViewPoll />
       </div>
     </>

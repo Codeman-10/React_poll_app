@@ -12,22 +12,18 @@ function ViewPoll() {
   useEffect(() => {
     const fetchPolls = async () => {
       const response = await axios.get("/api/polls");
-      console.log(...response.data);
       if (response.data.length > 0) {
         for (let i = 0; i < response.data.length; i++) {
-          addPoll(response.data[i]); // Ensure addPoll handles an array
+          addPoll(response.data[i]);
         }
       }
     };
     fetchPolls();
-  }, []);
-
-  useEffect(() => {
     socket.on("pollUpdated", (updatedPoll) => {
-      updatePoll(updatedPoll); // Ensure updatePoll updates the state correctly
+      updatePoll(updatedPoll);
     });
     socket.on("pollCreated", (bnew) => {
-      addPoll(bnew); // Ensure addPoll handles a single poll object
+      addPoll(bnew);
     });
   }, []);
 
@@ -35,7 +31,13 @@ function ViewPoll() {
     socket.emit("vote", pollId, optionIndex);
   };
 
-  // Add guard clause for when polls is undefined or empty
+  const deletePoll = async (pollId, optionIndex) => {
+    e.preventDefault();
+    const res = await axios.delete("/api/polls", {
+      pollId,
+    });
+    alert(JSON.stringify(res));
+  };
   if (!polls || polls.length === 0) {
     return (
       <div className="result_section">
@@ -49,13 +51,17 @@ function ViewPoll() {
     <div className="result_section">
       {polls.map((poll) => (
         <div key={poll.question}>
-          <h3>{poll.question}</h3>
+          <h3>
+            <span>{poll.question}</span>{" "}
+            <button onClick={() => deletePoll(poll.id, index)}>remove</button>
+          </h3>
           <ul>
             {poll.options?.map((option, index) => (
               <li key={option}>
                 <span>
                   {" "}
-                  {option} - <span className="votes_lbl">{poll.votes[index]} votes</span>
+                  {option} -{" "}
+                  <span className="votes_lbl">{poll.votes[index]} votes</span>
                 </span>
                 <button
                   type="button"

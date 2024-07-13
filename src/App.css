@@ -18,7 +18,7 @@ form {
   justify-content: space-around;
   flex: 1;
   width: 94%;
-  border: 2px solid green;
+  border: 2px solid rgb(54, 144, 218);
   padding-bottom: 30px;
   min-height: 100%;
   margin: 3%;
@@ -66,13 +66,14 @@ button:hover {
   background-color: white;
 }
 .result_section {
-  border: 2px solid yellow;
+  border: 2px solid rgb(54, 144, 218);
   margin: 2%;
   min-height: 10vh;
 }
 .result_section div {
   margin: 2px 5px;
-  border-bottom: 2px solid yellow;
+  border-top: 15px solid rgb(70, 78, 199);
+  margin-bottom: 5px;
 }
 .result_section div ul li {
   display: flex;
@@ -80,20 +81,35 @@ button:hover {
   justify-content: space-between;
   margin: 25px 0px;
 }
-.result_section div ul li button{
+.result_section div ul li button {
   margin: 0 25px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-around;
   align-self: start;
-  
 }
-.votes_lbl{
+.votes_lbl {
   background-color: white;
   color: blue;
   font-weight: bolder;
   padding: 3px;
   border-radius: 4px;
   letter-spacing: 1px;
+}
+h3 {
+  margin-right: 5px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0px 40px; */
+}
+
+h3 button {
+  margin-right: 0px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
