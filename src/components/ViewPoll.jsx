@@ -31,7 +31,7 @@ function ViewPoll() {
     socket.emit("vote", pollId, optionIndex);
   };
 
-  const deletePoll = async (pollId, optionIndex) => {
+  const deletePoll = async (pollId) => {
     e.preventDefault();
     const res = await axios.delete("/api/polls", {
       pollId,
@@ -53,7 +53,7 @@ function ViewPoll() {
         <div key={poll.question}>
           <h3>
             <span>{poll.question}</span>{" "}
-            <button onClick={() => deletePoll(poll.id, index)}>remove</button>
+            <button onClick={() => deletePoll(poll.id)}>remove</button>
           </h3>
           <ul>
             {poll.options?.map((option, index) => (
