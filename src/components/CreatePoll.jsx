@@ -4,7 +4,7 @@ import axios from "../utils/axiosConfig";
 function CreatePoll() {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState(["", ""]);
-
+  const [loading, setIsloading] = useState(false);
   const handleOptionChange = (index, value) => {
     const newOptions = [...options];
     newOptions[index] = value;
@@ -14,11 +14,13 @@ function CreatePoll() {
   const addOption = () => setOptions([...options, ""]);
 
   const handleSubmit = async (e) => {
+    setIsloading(true);
     e.preventDefault();
     const res = await axios.post("/api/polls", {
       question,
       options,
     });
+    setIsloading(false);
     setQuestion("");
     setOptions(["", ""]);
   };
@@ -56,7 +58,7 @@ function CreatePoll() {
           </div>
         ))}
         <div>
-          <button type="button" onClick={addOption}>
+          <button type="button" disabled={loading} onClick={addOption}>
             Add Option
           </button>
           <button type="submit">Create Poll</button>
