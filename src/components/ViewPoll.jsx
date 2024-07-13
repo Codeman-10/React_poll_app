@@ -8,7 +8,7 @@ function ViewPoll() {
   const addPoll = useStore((state) => state.addPoll);
   const updatePoll = useStore((state) => state.updatePoll);
   const socket = io("https://polling-web-service.onrender.com");
-
+  
   useEffect(() => {
     const fetchPolls = async () => {
       const response = await axios.get("/api/polls");
