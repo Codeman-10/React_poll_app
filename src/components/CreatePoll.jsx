@@ -5,6 +5,7 @@ function CreatePoll() {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState(["", ""]);
   const [loading, setIsloading] = useState(false);
+
   const handleOptionChange = (index, value) => {
     const newOptions = [...options];
     newOptions[index] = value;
@@ -12,6 +13,9 @@ function CreatePoll() {
   };
 
   const addOption = () => setOptions([...options, ""]);
+  const removeOption = () => {
+    setOptions((prev) => [...prev.slice(0, prev.length - 1)]);
+  };
 
   const handleSubmit = async (e) => {
     setIsloading(true);
@@ -57,11 +61,29 @@ function CreatePoll() {
             />
           </div>
         ))}
-        <div>
-          <button type="button" disabled={loading} onClick={addOption}>
-            Add Option
+        <div className="btn_container">
+          <div>
+            <button
+              type="button"
+              disabled={options.length > 5}
+              className="add_btn"
+              onClick={addOption}
+            >
+              Add Option
+            </button>
+            {options.length > 2 && (
+              <button
+                type="button"
+                className="remove_btn"
+                onClick={removeOption}
+              >
+                remove Option
+              </button>
+            )}
+          </div>
+          <button disabled={loading} type="submit">
+            Create Poll
           </button>
-          <button type="submit">Create Poll</button>
         </div>
       </form>
     </>

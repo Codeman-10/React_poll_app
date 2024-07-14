@@ -8,23 +8,28 @@ function ViewPoll() {
   const addPoll = useStore((state) => state.addPoll);
   const updatePoll = useStore((state) => state.updatePoll);
   const socket = io("https://polling-web-service.onrender.com");
-  
+  const loadPoll = useStore((state) => state.loadPoll);
+  const removePoll = useStore((state) => state.removePoll);
+
   useEffect(() => {
     const fetchPolls = async () => {
       const response = await axios.get("/api/polls");
       if (response.data.length > 0) {
-        for (let i = 0; i < response.data.length; i++) {
-          addPoll(response.data[i]);
-        }
+        console.log(response.data)
+        loadPoll(response.data);
       }
     };
     fetchPolls();
     socket.on("pollUpdated", (updatedPoll) => {
       updatePoll(updatedPoll);
     });
-    socket.on("pollCreated", (bnew) => {
-      addPoll(bnew);
+    socket.on("pollCreated", (newPoll) => {
+      addPoll(newPoll);
     });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   const handleVote = (pollId, optionIndex) => {
@@ -35,7 +40,10 @@ function ViewPoll() {
     const res = await axios.delete("/api/polls", {
       pollId,
     });
-    alert(JSON.stringify(res));
+
+    if (res.data.msg === "success") {
+      removePoll(pollId);
+    }
   };
   if (!polls || polls.length === 0) {
     return (

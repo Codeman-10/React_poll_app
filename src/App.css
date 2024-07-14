@@ -24,20 +24,21 @@ form {
   margin: 3%;
 }
 form div label {
-  flex: 0.2;
+  flex: 0.6;
   text-align: left;
   font-weight: 600;
+  margin-left: 60px;
   text-transform: capitalize;
 }
 form div input {
-  flex: 0.3;
+  flex: 0.5;
   height: 25px;
   outline: none;
 }
-form div {
+form > div {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: inherit;
   margin: 5px 0;
 }
@@ -45,13 +46,32 @@ form div button {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* width: inherit; */
   margin-top: 30px;
 }
+
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.btn_container > div {
+  display: flex;
+  align-items: center;
+  flex: 0.4;
+  justify-content: center;
+}
+.btn_container > button {
+  margin-right: 0px;
+  flex: 0.3;
+  padding: 10px;
+  width: 80px;
+  font-weight: 500;
+  font-size: smaller;
+}
+/* ----------------------------------------------------------------- */
 button {
   height: 40px;
   cursor: pointer;
-  width: 20%;
+  min-width: 20%;
   outline: none;
   border: none;
   border-radius: 2px;
@@ -65,6 +85,7 @@ button:hover {
   color: rgb(47, 0, 255);
   background-color: white;
 }
+/* ------------------------------------------------------------------ */
 .result_section {
   border: 2px solid rgb(54, 144, 218);
   margin: 2%;
